@@ -19,7 +19,7 @@ ground_surf = pygame.Surface((800,100))
 ground_surf.fill('green')
 
 text_font = pygame.font.SysFont('Calbiri', 30)
-score_surf = text_font.render('Forrest Gump', False, 'Black')
+score_surf = text_font.render('Forrest Gump', False, (64,64,64))
 score_rect = score_surf.get_rect(center = (400,50))
 
 player_surf = pygame.Surface((20,20))
@@ -39,10 +39,10 @@ while True:
 
     screen.blit(sky_surf,(0,0))
     screen.blit(ground_surf,(0,300))
-    pygame.draw.rect(screen, 'Yellow', score_rect)
-    pygame.draw.rect(screen, 'Yellow', score_rect,10)
-    pygame.draw.ellipse(screen,'brown',pygame.Rect(50,200,100,100))
-    # pygame.draw.line(screen,'gold',(0,0),pygame.mouse.get_pos(),10)
+    pygame.draw.rect(screen, '#c0e8ec', score_rect)
+    pygame.draw.rect(screen, '#c0e8ec', score_rect,10)
+    # pygame.draw.ellipse(screen,'brown',pygame.Rect(50,200,100,100)) #creating a rectangle which will be vounding box for the ellipse
+    # pygame.draw.line(screen,'gold',(0,0),pygame.mouse.get_pos(),10) #getting the mouse position
     screen.blit(score_surf,score_rect)
 
     enemy_rect.right -= 2

@@ -1,4 +1,2 @@
-_pos()
-    # if player_rect.collidepoint(mouse_pos):
-    #     print(pygame.mouse.get_pressed())
-    
+ct)
+    # pygame.draw.rect(screen, '#c0e8ec', score_rec
