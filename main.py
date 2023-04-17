@@ -19,7 +19,8 @@ ground_surf = pygame.Surface((800,100))
 ground_surf.fill('green')
 
 text_font = pygame.font.SysFont('Calbiri', 30)
-text_surf = text_font.render('Forrest Gump', False, 'Black')
+score_surf = text_font.render('Forrest Gump', False, 'Black')
+score_rect = score_surf.get_rect(center = (400,50))
 
 player_surf = pygame.Surface((20,20))
 player_surf.fill('white')
@@ -38,7 +39,7 @@ while True:
 
     screen.blit(sky_surf,(0,0))
     screen.blit(ground_surf,(0,300))
-    screen.blit(text_surf,(350,50))
+    screen.blit(score_surf,score_rect)
 
     enemy_rect.right -= 2
     if enemy_rect.right <= 0: enemy_rect.left = 800
