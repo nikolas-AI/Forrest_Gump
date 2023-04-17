@@ -1,2 +1,3 @@
-ct)
-    # pygame.draw.rect(screen, '#c0e8ec', score_rec
+ey.get_pressed()
+    if key[pygame.K_SPACE]:
+        print('ju
