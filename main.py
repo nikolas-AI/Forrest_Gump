@@ -36,12 +36,17 @@ while True:
     screen.blit(ground_surf,(0,300))
     screen.blit(text_surf,(350,50))
 
-    enemy_rect.left -= 2
+    enemy_rect.right -= 2
     if enemy_rect.right <= 0: enemy_rect.left = 800
     screen.blit(enemy_surf,enemy_rect)
 
     player_rect.left += 1
     screen.blit(player_surf,player_rect)
+
+    # if player_rect.colliderect(enemy_rect):
+    #     print("collision")
+
+    print(player_rect.collidepoint(200,300))
 
     pygame.display.update()
     clock.tick(60)
