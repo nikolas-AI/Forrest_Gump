@@ -48,9 +48,9 @@ while True:
     enemy_rect.right -= 2
     if enemy_rect.right <= 0: enemy_rect.left = 800
     screen.blit(enemy_surf,enemy_rect)
-
-    player_rect.left += 1
     screen.blit(player_surf,player_rect)
+    
+    key = pygame.key.get_pressed()
 
     # if player_rect.colliderect(enemy_rect):
     #     print("collision")
