@@ -66,7 +66,9 @@ while True:
     # if player_rect.colliderect(enemy_rect):
     #     print("collision")
 
-    
+    # mouse_pos = pygame.mouse.get_pos()
+    # if player_rect.collidepoint(mouse_pos):
+    #     print(pygame.mouse.get_pressed())
     
 
     pygame.display.update()
