@@ -12,6 +12,8 @@ enemy_surf.fill('red')
 enemy_rect = enemy_surf.get_rect(bottomleft = (700,300))
 x_pos = 700
 
+
+
 sky_surf = pygame.Surface((800,300))
 sky_surf.fill('skyblue')
 
