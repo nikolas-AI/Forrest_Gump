@@ -63,4 +63,4 @@ while True:
     screen.blit(player_surf,player_rect)
 
     pygame.display.update()
-    clock.tick(50)
+    clock.tick(60)
