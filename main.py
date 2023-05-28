@@ -46,6 +46,7 @@ while True:
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True
+                enemy_rect.left = 800
 
     if game_active:
         screen.blit(sky_surf,(0,0))
@@ -53,6 +54,7 @@ while True:
         pygame.draw.rect(screen, '#c0e8ec',score_rect)
         pygame.draw.rect(screen, '#c0e8ec',score_rect,10)
         screen.blit(score_surf,score_rect)
+
         enemy_rect.right -= 5
         if enemy_rect.right <= 0: enemy_rect.left =800
         screen.blit(enemy_surf,enemy_rect)
