@@ -8,7 +8,7 @@ clock = pygame.time.Clock()
 
 
 enemy_surf = pygame.image.load('aliena.png')
-enemy_surf = pygame.transform.scale(enemy_surf, (50,50))
+enemy_surf = pygame.transform.scale(enemy_surf, (70,70))
 enemy_rect = enemy_surf.get_rect(bottomleft = (700,300))
 x_pos = 700
 
@@ -24,6 +24,8 @@ score_surf = text_font.render('Forrest Gump', False, (64,64,64))
 score_rect = score_surf.get_rect(center = (400,50))
 
 player_surf = pygame.image.load('alienb.png')
+player_surf = pygame.transform.scale(player_surf, (70,70))
+
 player_rect = player_surf.get_rect(bottomleft = (100,300))
 
 
