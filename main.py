@@ -59,8 +59,12 @@ while True:
     player_rect.y += player_gravity
     if player_rect.bottom >= 300:
         player_rect.bottom = 300
-
     screen.blit(player_surf,player_rect)
+
+    #Collision
+    if enemy_rect.colliderect(player_rect):
+         pygame.quit()
+         exit()
 
     pygame.display.update()
     clock.tick(60)
