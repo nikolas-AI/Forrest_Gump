@@ -50,12 +50,12 @@ while True:
     pygame.draw.rect(screen, '#c0e8ec', score_rect,10)
     screen.blit(score_surf,score_rect)
 
-    enemy_rect.right -= 2
+    enemy_rect.right -= 5
     if enemy_rect.right <= 0: enemy_rect.left = 800
     screen.blit(enemy_surf,enemy_rect)
 
     #Player
-    player_gravity += 1
+    player_gravity += 0.8
     player_rect.y += player_gravity
     if player_rect.bottom >= 300:
         player_rect.bottom = 300
