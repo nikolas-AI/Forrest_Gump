@@ -8,7 +8,7 @@ clock = pygame.time.Clock()
 
 
 enemy_surf = pygame.image.load('aliena.png')
-enemy_rect = pygame.transform.scale(enemy_surf, (50,50))
+enemy_surf = pygame.transform.scale(enemy_surf, (50,50))
 enemy_rect = enemy_surf.get_rect(bottomleft = (700,300))
 x_pos = 700
 
