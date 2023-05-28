@@ -25,7 +25,7 @@ score_rect = score_surf.get_rect(center = (400,50))
 
 player_surf = pygame.image.load('alienb.png')
 player_surf = pygame.transform.scale(player_surf, (70,70))
-player_rect = player_surf.get_rect(bottomleft = (100,0))
+player_rect = player_surf.get_rect(bottomleft = (100,300))
 
 player_gravity = 0
 
