@@ -25,9 +25,9 @@ score_rect = score_surf.get_rect(center = (400,50))
 
 player_surf = pygame.image.load('alienb.png')
 player_surf = pygame.transform.scale(player_surf, (70,70))
+player_rect = player_surf.get_rect(bottomleft = (100,0))
 
-player_rect = player_surf.get_rect(bottomleft = (100,300))
-
+player_gravity = 0
 
 while True:
     for event in pygame.event.get():
@@ -52,7 +52,10 @@ while True:
     if enemy_rect.right <= 0: enemy_rect.left = 800
     screen.blit(enemy_surf,enemy_rect)
     screen.blit(player_surf,player_rect)
-    
+
+    #Player
+    player_gravity += 1
+    player_rect.y += player_gravity
     # key = pygame.key.get_pressed()
     # if key[pygame.K_SPACE]:
     #     print('jump')
