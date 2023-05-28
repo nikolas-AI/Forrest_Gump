@@ -37,37 +37,30 @@ while True:
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if player_rect.collidepoint(event.pos):
-                player_gravity = -20
+                player_gravity = -15
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                player_gravity = -20
+                player_gravity = -15
 
 
     screen.blit(sky_surf,(0,0))
     screen.blit(ground_surf,(0,300))
     pygame.draw.rect(screen, '#c0e8ec', score_rect)
     pygame.draw.rect(screen, '#c0e8ec', score_rect,10)
-    # pygame.draw.ellipse(screen,'brown',pygame.Rect(50,200,100,100)) #creating a rectangle which will be vounding box for the ellipse
-    # pygame.draw.line(screen,'gold',(0,0),pygame.mouse.get_pos(),10) #getting the mouse position
     screen.blit(score_surf,score_rect)
 
     enemy_rect.right -= 2
     if enemy_rect.right <= 0: enemy_rect.left = 800
     screen.blit(enemy_surf,enemy_rect)
-    screen.blit(player_surf,player_rect)
 
     #Player
     player_gravity += 1
     player_rect.y += player_gravity
-    # key = pygame.key.get_pressed()
-    # if key[pygame.K_SPACE]:
-    #     print('jump')
+    if player_rect.bottom >= 300:
+        player_rect.bottom = 300
 
-    # mouse_pos = pygame.mouse.get_pos()
-    # if player_rect.collidepoint(mouse_pos):
-    #     print(pygame.mouse.get_pressed())
-    
+    screen.blit(player_surf,player_rect)
 
     pygame.display.update()
     clock.tick(50)
