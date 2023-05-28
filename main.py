@@ -41,7 +41,7 @@ while True:
             if event.key == pygame.K_SPACE and player_rect.bottom >= 300:
                     player_gravity = -20
 
-    if game_active == True:
+    if game_active:
         screen.blit(sky_surf,(0,0))
         screen.blit(ground_surf,(0,300))
         pygame.draw.rect(screen, '#c0e8ec',score_rect)
