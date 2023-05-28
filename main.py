@@ -35,13 +35,13 @@ while True:
             pygame.quit()
             exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if player_rect.collidepoint(eventpos) and  player_rect.bottom >= 300:
+            if player_rect.collidepoint(event.pos) and  player_rect.bottom >= 300:
                 player_gravity = -20
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE and player_rect.bottom >= 300:
                     player_gravity = -20
 
-    if game_active == True:
+    if game_active:
         screen.blit(sky_surf,(0,0))
         screen.blit(ground_surf,(0,300))
         pygame.draw.rect(screen, '#c0e8ec',score_rect)
@@ -50,7 +50,7 @@ while True:
         enemy_rect.right -= 5
         if enemy_rect.right <= 0: enemy_rect.left =800
         screen.blit(enemy_surf,enemy_rect)
-        
+
         #Player
         player_gravity += 0.8
         player_rect.y += player_gravity
@@ -60,8 +60,7 @@ while True:
 
         #Collision
         if enemy_rect.colliderect(player_rect):
-            pygame.quit()
-            exit()
+            game_active = False
 
     pygame.display.update()
     clock.tick(60)
