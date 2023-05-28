@@ -61,6 +61,7 @@ while True:
         #Collision
         if enemy_rect.colliderect(player_rect):
             game_active = False
-
+    else:
+        screen.fill('yellow')
     pygame.display.update()
     clock.tick(60)
