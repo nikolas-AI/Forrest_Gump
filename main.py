@@ -1,6 +1,10 @@
 import pygame
 from sys import exit
 
+def display_score():
+   time = pygame.time.get_ticks()
+   print(time)
+
 pygame.init()
 screen =  pygame.display.set_mode((800,400))
 pygame.display.set_caption('Forrest Gump')
@@ -37,11 +41,11 @@ while True:
 
         if game_active:    
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if player_rect.collidepoint(event.pos) and  player_rect.bottom >= 300:
+                if player_rect.collidepoint(event.pos) and  player_rect.bottom >= 230:
                     player_gravity = -18
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE and player_rect.bottom >= 300:
+                if event.key == pygame.K_SPACE and player_rect.bottom >= 230:
                     player_gravity = -18
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
@@ -51,9 +55,10 @@ while True:
     if game_active:
         screen.blit(sky_surf,(0,0))
         screen.blit(ground_surf,(0,300))
-        pygame.draw.rect(screen, '#c0e8ec',score_rect)
-        pygame.draw.rect(screen, '#c0e8ec',score_rect,10)
-        screen.blit(score_surf,score_rect)
+        # pygame.draw.rect(screen, '#c0e8ec',score_rect)
+        # pygame.draw.rect(screen, '#c0e8ec',score_rect,10)
+        # screen.blit(score_surf,score_rect)
+        display_score()
 
         enemy_rect.right -= 5
         if enemy_rect.right <= 0: enemy_rect.left =800
