@@ -37,7 +37,7 @@ while True:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                print('jump')
+                player_gravity = -20
 
 
     screen.blit(sky_surf,(0,0))
