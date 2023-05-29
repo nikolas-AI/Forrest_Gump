@@ -2,17 +2,17 @@ import pygame
 from sys import exit
 
 def display_score():
-   time = pygame.time.get_ticks()
+   time = int(pygame.time.get_ticks() / 1000) - start_time
    score_surf = text_font.render(f'{time}', False, (64, 64, 64))
    score_rect = score_surf.get_rect(center = (400, 60))
    screen.blit(score_surf, score_rect)
-   print(time)
 
 pygame.init()
 screen =  pygame.display.set_mode((800,400))
 pygame.display.set_caption('Forrest Gump')
 clock = pygame.time.Clock()
 game_active = True
+start_time = 0
 
 enemy_surf = pygame.image.load('enemy.png')
 enemy_surf = pygame.transform.scale(enemy_surf, (70,70))
@@ -54,6 +54,7 @@ while True:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True
                 enemy_rect.left = 800
+                start_time = int(pygame.time.get_ticks() / 1000)
 
     if game_active:
         screen.blit(sky_surf,(0,0))
@@ -77,6 +78,7 @@ while True:
         #Collision
         if enemy_rect.colliderect(player_rect):
             game_active = False
+
     else:
         screen.fill('Black')
 
