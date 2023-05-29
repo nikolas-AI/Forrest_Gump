@@ -42,7 +42,7 @@ player_surf = pygame.image.load('chara.png')
 player_surf = pygame.transform.scale(player_surf, (70,70))
 player_rect = player_surf.get_rect(bottomleft = (100,320))
 
-restart_surf = pygame.image.load('screen1.jpg')
+restart_surf = pygame.image.load('screen2.jpg')
 restart_surf = pygame.transform.scale(restart_surf, (800, 800))
 restart_rect = restart_surf.get_rect(x = 0)
 
@@ -79,6 +79,7 @@ while True:
         # pygame.draw.rect(screen, '#c0e8ec',score_rect,10)
         screen.blit(name_surf, name_rect)
         display_score()
+
 
         enemy_rect.right -= 5
         if enemy_rect.right <= 0: enemy_rect.left =800
