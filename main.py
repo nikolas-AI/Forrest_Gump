@@ -3,6 +3,9 @@ from sys import exit
 
 def display_score():
    time = pygame.time.get_ticks()
+   score_surf = text_font.render(f'{time}', False, (64, 64, 64))
+   score_rect = score_surf.get_rect(center = (400, 60))
+   screen.blit(score_surf, score_rect)
    print(time)
 
 pygame.init()
@@ -24,8 +27,8 @@ ground_surf = pygame.Surface((800,100))
 ground_surf.fill('green')
 
 text_font = pygame.font.SysFont('Calbiri', 30)
-score_surf = text_font.render('Forrest Gump', False, (64,64,64))
-score_rect = score_surf.get_rect(center = (400,50))
+name_surf = text_font.render('Forrest Gump', False, (64,64,64))
+name_rect = name_surf.get_rect(center = (400,40))
 
 player_surf = pygame.image.load('chara.png')
 player_surf = pygame.transform.scale(player_surf, (70,70))
@@ -57,7 +60,7 @@ while True:
         screen.blit(ground_surf,(0,300))
         # pygame.draw.rect(screen, '#c0e8ec',score_rect)
         # pygame.draw.rect(screen, '#c0e8ec',score_rect,10)
-        # screen.blit(score_surf,score_rect)
+        screen.blit(name_surf,name_rect)
         display_score()
 
         enemy_rect.right -= 5
