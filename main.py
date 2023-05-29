@@ -16,7 +16,7 @@ start_time = 0
 
 enemy_surf = pygame.image.load('enemy.png')
 enemy_surf = pygame.transform.scale(enemy_surf, (70,70))
-enemy_rect = enemy_surf.get_rect(bottomleft = (700,300))
+enemy_rect = enemy_surf.get_rect(bottomleft = (700,350))
 x_pos = 700
 
 
@@ -28,7 +28,7 @@ sky_surf = pygame.transform.scale(sky_surf, (800,800))
 sky_rect = sky_surf.get_rect(x = 0)
 
 ground_surf = pygame.image.load('ground.jpg')
-ground_surf = pygame.transform.scale(ground_surf, (800,800))
+ground_surf = pygame.transform.scale(ground_surf, (800,100))
 sky_rect = ground_surf.get_rect(y = 0)
 
 # ground_surf = pygame.Surface((800,100))
@@ -40,7 +40,7 @@ name_rect = name_surf.get_rect(center = (400,20))
 
 player_surf = pygame.image.load('chara.png')
 player_surf = pygame.transform.scale(player_surf, (70,70))
-player_rect = player_surf.get_rect(bottomleft = (100,300))
+player_rect = player_surf.get_rect(bottomleft = (100,320))
 
 restart_surf = pygame.image.load('screen1.jpg')
 restart_surf = pygame.transform.scale(restart_surf, (800, 800))
@@ -56,11 +56,11 @@ while True:
 
         if game_active:    
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if player_rect.collidepoint(event.pos) and  player_rect.bottom >= 230:
+                if player_rect.collidepoint(event.pos) and  player_rect.bottom >= 260:
                     player_gravity = -18
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE and player_rect.bottom >= 230:
+                if event.key == pygame.K_SPACE and player_rect.bottom >= 260:
                     player_gravity = -18
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
@@ -83,8 +83,8 @@ while True:
         #Player
         player_gravity += 0.8
         player_rect.y += player_gravity
-        if player_rect.bottom >= 300:
-            player_rect.bottom = 300
+        if player_rect.bottom >= 350:
+            player_rect.bottom = 350
         screen.blit(player_surf, player_rect)
 
         #Collision
