@@ -30,15 +30,9 @@ ground_surf = pygame.image.load('ground.jpg').convert_alpha()
 ground_surf = pygame.transform.scale(ground_surf, (800,100))
 sky_rect = ground_surf.get_rect(y = 0)
 
-text_font = pygame.font.SysFont('Ariel', 40)
+text_font = pygame.font.SysFont('Ariel', 55)
 name_surf = text_font.render('Forrest Gump', False, 'Black')
 name_rect = name_surf.get_rect(center = (400,20))
-
-# else:
-#     text_font = pygame.font.SysFont('Ariel', 70)
-#     name_surf = text_font.render('Forrest Gump', False, 'Black')
-#     name_rect = name_surf.get_rect(center = (400,20))
-
 
 player_surf = pygame.image.load('chara.png').convert_alpha()
 player_surf = pygame.transform.scale(player_surf, (70,70))
