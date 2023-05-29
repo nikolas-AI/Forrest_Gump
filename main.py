@@ -9,6 +9,7 @@ def display_score():
 
 pygame.init()
 screen =  pygame.display.set_mode((800,400))
+screen_rect = screen.get_rect(x = 0)
 pygame.display.set_caption('Forrest Gump')
 clock = pygame.time.Clock()
 game_active = True
@@ -45,6 +46,10 @@ player_rect = player_surf.get_rect(bottomleft = (100,320))
 restart_surf = pygame.image.load('screen2.jpg')
 restart_surf = pygame.transform.scale(restart_surf, (800, 800))
 restart_rect = restart_surf.get_rect(x = 0)
+
+over_font = pygame.font.SysFont('Ariel', 100)
+over_surf = over_font.render('Game over', False, 'Red')
+over_rect = name_surf.get_rect(center = (300, 180))
 
 player_gravity = 0
 
@@ -99,6 +104,7 @@ while True:
 
     else:
         screen.blit(restart_surf, restart_rect)
+        screen.blit(over_surf, over_rect)
 
     pygame.display.update()
     clock.tick(60)
