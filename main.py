@@ -84,6 +84,12 @@ while True:
                 enemy_rect.left = 800
                 start_time = int(pygame.time.get_ticks() / 800)
 
+            elif event.type == pygame.MOUSEBUTTONDOWN and pic_player_rect.collidepoint(event.pos):
+                game_active = True
+                enemy_rect.left = 800
+                start_time = int(pygame.time.get_ticks() / 800)
+
+
     if game_active:
         screen.blit(sky_surf,(0,0))
         screen.blit(ground_surf,(0,300))
