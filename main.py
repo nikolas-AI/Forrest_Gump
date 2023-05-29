@@ -11,7 +11,7 @@ pygame.display.set_caption('Forrest Gump')
 clock = pygame.time.Clock()
 game_active = True
 
-enemy_surf = pygame.image.load('aliena.png')
+enemy_surf = pygame.image.load('enemy.png')
 enemy_surf = pygame.transform.scale(enemy_surf, (70,70))
 enemy_rect = enemy_surf.get_rect(bottomleft = (700,300))
 x_pos = 700
@@ -27,7 +27,7 @@ text_font = pygame.font.SysFont('Calbiri', 30)
 score_surf = text_font.render('Forrest Gump', False, (64,64,64))
 score_rect = score_surf.get_rect(center = (400,50))
 
-player_surf = pygame.image.load('alienb.png')
+player_surf = pygame.image.load('chara.png')
 player_surf = pygame.transform.scale(player_surf, (70,70))
 player_rect = player_surf.get_rect(bottomleft = (100,300))
 
@@ -75,6 +75,7 @@ while True:
         if enemy_rect.colliderect(player_rect):
             game_active = False
     else:
-        screen.fill('yellow')
+        screen.fill('Black')
+
     pygame.display.update()
     clock.tick(60)
