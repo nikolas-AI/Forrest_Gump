@@ -117,6 +117,7 @@ while True:
 
     else:
         screen.blit(restart_surf, restart_rect)
+        screen.blit(name_surf, name_rect)
         screen.blit(over_surf, over_rect)
         screen.blit(over_score, over_score_rect)
         screen.blit(pic_player_surf, pic_player_rect)
