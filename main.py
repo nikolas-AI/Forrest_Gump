@@ -62,6 +62,8 @@ while True:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE and player_rect.bottom >= 260:
                     player_gravity = -18
+                if event.key == pygame.K_LEFT and player_rect.left >= 0:
+                    player_rect.left -= 5
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True
