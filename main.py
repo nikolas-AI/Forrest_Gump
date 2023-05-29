@@ -15,7 +15,7 @@ clock = pygame.time.Clock()
 game_active = True
 start_time = 0
 
-enemy_surf = pygame.image.load('enemy.png')
+enemy_surf = pygame.image.load('enemy.png').convert_alpha()
 enemy_surf = pygame.transform.scale(enemy_surf, (70,70))
 enemy_rect = enemy_surf.get_rect(bottomleft = (700,350))
 x_pos = 700
@@ -24,11 +24,11 @@ x_pos = 700
 # sky_surf = pygame.Surface((800,300))
 # sky_surf.fill('skyblue')
 
-sky_surf = pygame.image.load('screen2.jpg')
+sky_surf = pygame.image.load('screen1.jpg').convert_alpha()
 sky_surf = pygame.transform.scale(sky_surf, (800,800))
 sky_rect = sky_surf.get_rect(x = 0)
 
-ground_surf = pygame.image.load('ground.jpg')
+ground_surf = pygame.image.load('ground.jpg').convert_alpha()
 ground_surf = pygame.transform.scale(ground_surf, (800,100))
 sky_rect = ground_surf.get_rect(y = 0)
 
@@ -39,20 +39,24 @@ text_font = pygame.font.SysFont('Ariel', 40)
 name_surf = text_font.render('Forrest Gump', False, 'Black')
 name_rect = name_surf.get_rect(center = (400,20))
 
-player_surf = pygame.image.load('chara.png')
+player_surf = pygame.image.load('chara.png').convert_alpha()
 player_surf = pygame.transform.scale(player_surf, (70,70))
 player_rect = player_surf.get_rect(bottomleft = (100,320))
 
-restart_surf = pygame.image.load('screen2.jpg')
+restart_surf = pygame.image.load('screen2.jpg').convert_alpha()
 restart_surf = pygame.transform.scale(restart_surf, (800, 800))
 restart_rect = restart_surf.get_rect(x = 0)
+
+pic_player_surf = pygame.image.load('chara.png').convert_alpha()
+pic_player_surf = pygame.transform.scale(pic_player_surf, (100,100))
+pic_player_rect = pic_player_surf.get_rect(center = (400,90))
 
 over_font = pygame.font.SysFont('Ariel', 100)
 over_surf = over_font.render('Game over', False, 'Red')
 over_rect = name_surf.get_rect(center = (300, 140))
 
 over_score =text_font.render(f'Your score: {int(pygame.time.get_ticks() / 800)}', False, 'Blue')
-over_score_rect = over_score.get_rect(center = (400, 250))
+over_score_rect = over_score.get_rect(center = (400, 230))
 
 player_gravity = 0
 
@@ -109,6 +113,7 @@ while True:
         screen.blit(restart_surf, restart_rect)
         screen.blit(over_surf, over_rect)
         screen.blit(over_score, over_score_rect)
+        screen.blit(pic_player_surf, pic_player_rect)
 
     pygame.display.update()
     clock.tick(60)
