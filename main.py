@@ -59,7 +59,7 @@ over_score =text_font.render(f'Your score: {int(pygame.time.get_ticks() / 800)}'
 over_score_rect = over_score.get_rect(center = (400, 230))
 
 start_font = pygame.font.SysFont('Ariel', 60)
-start_surf = start_font.render('Press to continue: ', False, 'Red')
+start_surf = start_font.render('Press to continue', False, 'Red')
 start_rect = start_surf.get_rect(center = (300, 140))
 
 
