@@ -6,14 +6,17 @@ def display_score():
    score_surf = text_font.render(f'{time}', False, 'Blue')
    score_rect = score_surf.get_rect(center = (400, 60))
    screen.blit(score_surf, score_rect)
+   return time
 
 pygame.init()
 screen =  pygame.display.set_mode((800,400))
 screen_rect = screen.get_rect(x = 0)
 pygame.display.set_caption('Forrest Gump')
+text_font = pygame.font.SysFont('Ariel', 40)
 clock = pygame.time.Clock()
 game_active = True
 start_time = 0
+score = display_score()
 
 enemy_surf = pygame.image.load('enemy.png').convert_alpha()
 enemy_surf = pygame.transform.scale(enemy_surf, (70,70))
@@ -35,7 +38,6 @@ sky_rect = ground_surf.get_rect(y = 0)
 # ground_surf = pygame.Surface((800,100))
 # ground_surf.fill('green')
 
-text_font = pygame.font.SysFont('Ariel', 40)
 name_surf = text_font.render('Forrest Gump', False, 'Black')
 name_rect = name_surf.get_rect(center = (400,20))
 
@@ -48,19 +50,16 @@ restart_surf = pygame.transform.scale(restart_surf, (800, 800))
 restart_rect = restart_surf.get_rect(x = 0)
 
 pic_player_surf = pygame.image.load('chara.png').convert_alpha()
-pic_player_surf = pygame.transform.scale(pic_player_surf, (100,100))
+pic_player_surf = pygame.transform.scale(pic_player_surf, (150,150))
 pic_player_rect = pic_player_surf.get_rect(center = (400,90))
 
 over_font = pygame.font.SysFont('Ariel', 100)
 over_surf = over_font.render('Game over', False, 'Red')
 over_rect = over_surf.get_rect(center = (400, 170))
 
-over_score =text_font.render(f'Your score: {int(pygame.time.get_ticks() / 800)}', False, 'Blue')
-over_score_rect = over_score.get_rect(center = (400, 230))
-
-start_font = pygame.font.SysFont('Ariel', 60)
-start_surf = start_font.render('Press to continue', False, 'Red')
-start_rect = start_surf.get_rect(center = (300, 140))
+start_font = pygame.font.SysFont('Ariel', 30)
+start_surf = start_font.render('Press the character to continue', False, 'Blue')
+start_rect = start_surf.get_rect(center = (400, 160))
 
 
 player_gravity = 0
@@ -123,9 +122,16 @@ while True:
     else:
         screen.blit(restart_surf, restart_rect)
         screen.blit(name_surf, name_rect)
-        screen.blit(over_surf, over_rect)
-        screen.blit(over_score, over_score_rect)
         screen.blit(pic_player_surf, pic_player_rect)
+        
+        over_score =text_font.render(f'Your score: {int(pygame.time.get_ticks() / 800)}', False, 'Blue')
+        over_score_rect = over_score.get_rect(center = (400, 230))
+
+        if score == 0:
+            screen.blit(start_surf, start_rect)
+        else:
+            screen.blit(over_surf, over_rect)
+            screen.blit(over_score, over_score_rect)
 
     pygame.display.update()
     clock.tick(60)
