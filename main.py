@@ -20,8 +20,12 @@ enemy_rect = enemy_surf.get_rect(bottomleft = (700,300))
 x_pos = 700
 
 
-sky_surf = pygame.Surface((800,300))
-sky_surf.fill('skyblue')
+# sky_surf = pygame.Surface((800,300))
+# sky_surf.fill('skyblue')
+
+sky_surf = pygame.image.load('screen2.jpg')
+sky_surf = pygame.transform.scale(sky_surf, (800,800))
+sky_rect = sky_surf.get_rect(x = 0)
 
 ground_surf = pygame.Surface((800,100))
 ground_surf.fill('green')
@@ -33,6 +37,10 @@ name_rect = name_surf.get_rect(center = (400,40))
 player_surf = pygame.image.load('chara.png')
 player_surf = pygame.transform.scale(player_surf, (70,70))
 player_rect = player_surf.get_rect(bottomleft = (100,300))
+
+restart_surf = pygame.image.load('screen.jpg')
+restart_surf = pygame.transform.scale(restart_surf, (800, 800))
+restart_rect = restart_surf.get_rect(x = 0)
 
 player_gravity = 0
 
@@ -61,7 +69,7 @@ while True:
         screen.blit(ground_surf,(0,300))
         # pygame.draw.rect(screen, '#c0e8ec',score_rect)
         # pygame.draw.rect(screen, '#c0e8ec',score_rect,10)
-        screen.blit(name_surf,name_rect)
+        screen.blit(name_surf, name_rect)
         display_score()
 
         enemy_rect.right -= 5
@@ -73,14 +81,14 @@ while True:
         player_rect.y += player_gravity
         if player_rect.bottom >= 300:
             player_rect.bottom = 300
-        screen.blit(player_surf,player_rect)
+        screen.blit(player_surf, player_rect)
 
         #Collision
         if enemy_rect.colliderect(player_rect):
             game_active = False
 
     else:
-        screen.fill('Black')
+        screen.blit(restart_surf, restart_rect)
 
     pygame.display.update()
     clock.tick(60)
