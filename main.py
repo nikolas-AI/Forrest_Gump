@@ -53,10 +53,15 @@ pic_player_rect = pic_player_surf.get_rect(center = (400,90))
 
 over_font = pygame.font.SysFont('Ariel', 100)
 over_surf = over_font.render('Game over', False, 'Red')
-over_rect = name_surf.get_rect(center = (300, 140))
+over_rect = over_surf.get_rect(center = (300, 150))
 
 over_score =text_font.render(f'Your score: {int(pygame.time.get_ticks() / 800)}', False, 'Blue')
 over_score_rect = over_score.get_rect(center = (400, 230))
+
+start_font = pygame.font.SysFont('Ariel', 60)
+start_surf = start_font.render('Press to continue', False, 'Red')
+start_rect = start_surf.get_rect(center = (300, 140))
+
 
 player_gravity = 0
 
