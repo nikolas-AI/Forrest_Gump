@@ -49,7 +49,10 @@ restart_rect = restart_surf.get_rect(x = 0)
 
 over_font = pygame.font.SysFont('Ariel', 100)
 over_surf = over_font.render('Game over', False, 'Red')
-over_rect = name_surf.get_rect(center = (300, 180))
+over_rect = name_surf.get_rect(center = (300, 140))
+
+over_score =text_font.render(f'Your score: {int(pygame.time.get_ticks() / 800)}', False, 'Blue')
+over_score_rect = over_score.get_rect(center = (400, 250))
 
 player_gravity = 0
 
@@ -105,6 +108,7 @@ while True:
     else:
         screen.blit(restart_surf, restart_rect)
         screen.blit(over_surf, over_rect)
+        screen.blit(over_score, over_score_rect)
 
     pygame.display.update()
     clock.tick(60)
