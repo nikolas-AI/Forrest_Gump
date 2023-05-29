@@ -12,7 +12,6 @@ pygame.init()
 screen =  pygame.display.set_mode((800,400))
 screen_rect = screen.get_rect(x = 0)
 pygame.display.set_caption('Forrest Gump')
-text_font = pygame.font.SysFont('Ariel', 40)
 clock = pygame.time.Clock()
 game_active = False
 start_time = 0
@@ -23,10 +22,6 @@ enemy_surf = pygame.transform.scale(enemy_surf, (70,70))
 enemy_rect = enemy_surf.get_rect(bottomleft = (700,350))
 x_pos = 700
 
-
-# sky_surf = pygame.Surface((800,300))
-# sky_surf.fill('skyblue')
-
 sky_surf = pygame.image.load('screen1.jpg').convert_alpha()
 sky_surf = pygame.transform.scale(sky_surf, (800,800))
 sky_rect = sky_surf.get_rect(x = 0)
@@ -35,11 +30,15 @@ ground_surf = pygame.image.load('ground.jpg').convert_alpha()
 ground_surf = pygame.transform.scale(ground_surf, (800,100))
 sky_rect = ground_surf.get_rect(y = 0)
 
-# ground_surf = pygame.Surface((800,100))
-# ground_surf.fill('green')
-
+text_font = pygame.font.SysFont('Ariel', 40)
 name_surf = text_font.render('Forrest Gump', False, 'Black')
 name_rect = name_surf.get_rect(center = (400,20))
+
+# else:
+#     text_font = pygame.font.SysFont('Ariel', 70)
+#     name_surf = text_font.render('Forrest Gump', False, 'Black')
+#     name_rect = name_surf.get_rect(center = (400,20))
+
 
 player_surf = pygame.image.load('chara.png').convert_alpha()
 player_surf = pygame.transform.scale(player_surf, (70,70))
