@@ -64,6 +64,8 @@ while True:
                     player_gravity = -18
                 if event.key == pygame.K_LEFT and player_rect.left >= 0:
                     player_rect.left -= 5
+                if event.key == pygame.K_RIGHT and player_rect.right <= 300:
+                    player_rect.right += 5
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True
@@ -92,6 +94,7 @@ while True:
         #Collision
         if enemy_rect.colliderect(player_rect):
             game_active = False
+            player_rect.left = 100
 
     else:
         screen.blit(restart_surf, restart_rect)
