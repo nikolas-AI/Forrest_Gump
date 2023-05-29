@@ -14,9 +14,9 @@ screen_rect = screen.get_rect(x = 0)
 pygame.display.set_caption('Forrest Gump')
 text_font = pygame.font.SysFont('Ariel', 40)
 clock = pygame.time.Clock()
-game_active = True
+game_active = False
 start_time = 0
-score = display_score()
+score = 0
 
 enemy_surf = pygame.image.load('enemy.png').convert_alpha()
 enemy_surf = pygame.transform.scale(enemy_surf, (70,70))
@@ -58,9 +58,8 @@ over_surf = over_font.render('Game over', False, 'Red')
 over_rect = over_surf.get_rect(center = (400, 170))
 
 start_font = pygame.font.SysFont('Ariel', 30)
-start_surf = start_font.render('Press the character to continue', False, 'Blue')
-start_rect = start_surf.get_rect(center = (400, 160))
-
+start_surf = start_font.render('Press the character to start', False, 'Blue')
+start_rect = start_surf.get_rect(center = (400, 180))
 
 player_gravity = 0
 
@@ -97,10 +96,8 @@ while True:
     if game_active:
         screen.blit(sky_surf,(0,0))
         screen.blit(ground_surf,(0,300))
-        # pygame.draw.rect(screen, '#c0e8ec',score_rect)
-        # pygame.draw.rect(screen, '#c0e8ec',score_rect,10)
         screen.blit(name_surf, name_rect)
-        display_score()
+        score = display_score()
 
 
         enemy_rect.right -= 5
@@ -124,7 +121,7 @@ while True:
         screen.blit(name_surf, name_rect)
         screen.blit(pic_player_surf, pic_player_rect)
         
-        over_score =text_font.render(f'Your score: {int(pygame.time.get_ticks() / 800)}', False, 'Blue')
+        over_score =text_font.render(f'Your score: {score}', False, 'Blue')
         over_score_rect = over_score.get_rect(center = (400, 230))
 
         if score == 0:
