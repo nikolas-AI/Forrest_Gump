@@ -3,6 +3,13 @@ from sys import exit
 from random import randint
 import time
 
+class Player(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.image.load('char.png').convert_alpha()
+        self.image = pygame.transform.scale(self.image, (80, 80))
+        self.rect = self.image.get_rect(bottomleft = (100,360))
+
 def display_score():
    time = int(pygame.time.get_ticks() / 800) - start_time
    score_surf = text_font.render(f'{time}', False, 'Blue')
@@ -27,7 +34,9 @@ def obstacle_movement(obstacle_list):
 def collisions(player, obstacles):
     if obstacles:
         for obstacle_rect in obstacles:
-            if player.colliderect(obstacle_rect): return False
+            if player.colliderect(obstacle_rect):
+                time.sleep(1)
+                return False
     return True
          
 pygame.init()
