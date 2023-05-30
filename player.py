@@ -10,15 +10,15 @@ class Player(pygame.sprite.Sprite):
 
     def player_input(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] and self.rect.bottom >= 180:
-            self.gravity = -18
+        if keys[pygame.K_SPACE] and self.rect.bottom >= 200:
+            self.gravity = -15
         if keys[pygame.K_LEFT] and self.rect.left >= 0:
                 self.rect.left -= 5
         if keys[pygame.K_RIGHT] and self.rect.right <= 300:
                 self.rect.right += 5
 
     def apply_gravity(self):
-        self.gravity += 0.8
+        self.gravity += 1
         self.rect.y += self.gravity
         if self.rect.bottom >= 360:
             self.rect.bottom = 360

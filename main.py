@@ -1,6 +1,6 @@
 import pygame
 from sys import exit
-from random import randint
+from random import randint, choice
 import time
 
 from player import Player
@@ -13,28 +13,36 @@ def display_score():
    screen.blit(score_surf, score_rect)
    return time
 
-def obstacle_movement(obstacle_list):
-    if obstacle_list:
-        for obstacle_rect in obstacle_list:
-            obstacle_rect.x -= 5
-            if obstacle_rect.bottom == 360:
-                screen.blit(enemya_surf, obstacle_rect)
-            else: 
-                screen.blit(enemyb_surf, obstacle_rect)
+# def obstacle_movement(obstacle_list):
+#     if obstacle_list:
+#         for obstacle_rect in obstacle_list:
+#             obstacle_rect.x -= 5
+#             if obstacle_rect.bottom == 360:
+#                 screen.blit(enemya_surf, obstacle_rect)
+#             else: 
+#                 screen.blit(enemyb_surf, obstacle_rect)
 
-        obstacle_list = [obstacle for obstacle in obstacle_list if obstacle.x > -100]
-        return obstacle_list
+    #     obstacle_list = [obstacle for obstacle in obstacle_list if obstacle.x > -100]
+    #     return obstacle_list
+    # else:
+    #     return [ ]
+
+# def collisions(player, obstacles):
+#     if obstacles:
+#         for obstacle_rect in obstacles:
+#             if player.colliderect(obstacle_rect):
+#                 time.sleep(.5)
+#                 return False
+#     return True
+
+def collision_sprite():
+    if pygame.sprite.spritecollide(player.sprite, obstacle_group, False ):
+        time.sleep(.5)
+        obstacle_group.empty()
+        return False
     else:
-        return [ ]
-
-def collisions(player, obstacles):
-    if obstacles:
-        for obstacle_rect in obstacles:
-            if player.colliderect(obstacle_rect):
-                time.sleep(.5)
-                return False
-    return True
-         
+        return True
+    
 pygame.init()
 screen =  pygame.display.set_mode((800,400))
 screen_rect = screen.get_rect(x = 0)
@@ -50,13 +58,13 @@ player.add(Player())
 obstacle_group = pygame.sprite.Group()
 
 #Obstacles
-enemya_surf = pygame.image.load('enemy.png').convert_alpha()
-enemya_surf = pygame.transform.scale(enemya_surf, (50,50))
+# enemya_surf = pygame.image.load('enemy.png').convert_alpha()
+# enemya_surf = pygame.transform.scale(enemya_surf, (50,50))
 
-enemyb_surf = pygame.image.load('enemyb.png').convert_alpha()
-enemyb_surf = pygame.transform.scale(enemyb_surf, (60,60))
+# enemyb_surf = pygame.image.load('enemyb.png').convert_alpha()
+# enemyb_surf = pygame.transform.scale(enemyb_surf, (60,60))
 
-obstacle_rect_list =[ ]
+# obstacle_rect_list =[ ]
 
 
 sky_surf = pygame.image.load('screen1.jpg').convert_alpha()
@@ -71,9 +79,9 @@ text_font = pygame.font.SysFont('Ariel', 55)
 name_surf = text_font.render('Forrest Gump', False, (0,0,2))
 name_rect = name_surf.get_rect(center = (400,20))
 
-player_surf = pygame.image.load('char.png').convert_alpha()
-player_surf = pygame.transform.scale(player_surf, (60,60))
-player_rect = player_surf.get_rect(bottomleft = (100,360))
+# player_surf = pygame.image.load('char.png').convert_alpha()
+# player_surf = pygame.transform.scale(player_surf, (60,60))
+# player_rect = player_surf.get_rect(bottomleft = (100,360))
 
 restart_surf = pygame.image.load('screen2.jpg').convert_alpha()
 restart_surf = pygame.transform.scale(restart_surf, (800, 800))
@@ -104,20 +112,25 @@ while True:
             exit()
 
         if game_active:    
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if player_rect.collidepoint(event.pos) and  player_rect.bottom >= 180:
-                    player_gravity = -18
+            # if event.type == pygame.MOUSEBUTTONDOWN:
+            #     if player_rect.collidepoint(event.pos) and  player_rect.bottom >= 180:
+            #         player_gravity = -18
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE and player_rect.bottom >= 180:
-                    player_gravity = -18
-                if event.key == pygame.K_LEFT and player_rect.left >= 0:
-                    player_rect.left -= 5
-                if event.key == pygame.K_RIGHT and player_rect.right <= 300:
-                    player_rect.right += 5
+            # if event.type == pygame.KEYDOWN:
+            #     if event.key == pygame.K_SPACE and player_rect.bottom >= 180:
+            #         player_gravity = -18
+            #     if event.key == pygame.K_LEFT and player_rect.left >= 0:
+            #         player_rect.left -= 5
+            #     if event.key == pygame.K_RIGHT and player_rect.right <= 300:
+            #         player_rect.right += 5
 
             if event.type == obstacle_timer:
-                obstacle_group.add(Obstacle('fly'))
+                obstacle_group.add(Obstacle(choice(['fly', 'spider', 'spider', 'spider' ])))
+                # if randint(0, 2):
+                #     obstacle_group.add(Obstacle('spider'))
+                # else:
+                #     obstacle_group.add(Obstacle('fly'))
+
                 # if randint(0, 2):
                 #     obstacle_rect_list.append(enemya_surf.get_rect(bottomleft = (randint(850, 1500) ,360)))
                 # else:
@@ -135,7 +148,7 @@ while True:
     if game_active:
         screen.blit(sky_surf,(0,0))
         screen.blit(ground_surf,(0,300))
-        # screen.blit(name_surf, name_rect)
+        screen.blit(name_surf, name_rect)
         score = display_score()
 
 
@@ -144,29 +157,32 @@ while True:
         # screen.blit(enemya_surf,enemya_rect)
 
         #Player
-        player_gravity += 0.8 
-        player_rect.y += player_gravity
-        if player_rect.bottom >= 360:
-            player_rect.bottom = 360
-        screen.blit(player_surf, player_rect)
+        # player_gravity += 0.8 
+        # player_rect.y += player_gravity
+        # if player_rect.bottom >= 360:
+        #     player_rect.bottom = 360
+        # screen.blit(player_surf, player_rect)
+
         player.draw(screen)
         player.update()
         obstacle_group.draw(screen)
         obstacle_group.update()
 
         #Obstacle movement
-        obstacle_rect_list = obstacle_movement(obstacle_rect_list)
+        # obstacle_rect_list = obstacle_movement(obstacle_rect_list)
 
         #Collision
-        game_active = collisions(player_rect, obstacle_rect_list)
+        game_active = collision_sprite()
+        # game_active = collisions(player_rect, obstacle_rect_list)
 
     else:
         screen.blit(restart_surf, restart_rect)
         screen.blit(name_surf, name_rect)
         screen.blit(pic_player_surf, pic_player_rect)
-        obstacle_rect_list.clear()
-        player_rect.bottomleft = (100,360)
-        player_gravity = 0
+
+        # obstacle_rect_list.clear()
+        # player_rect.bottomleft = (100,360)
+        # player_gravity = 0
         
         over_score =text_font.render(f'Your score: {score}', False, (34,0,150))
         over_score_rect = over_score.get_rect(center = (400, 250))
