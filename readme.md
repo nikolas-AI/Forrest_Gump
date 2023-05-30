@@ -26,4 +26,4 @@ Welcome to Jump and Dodge Game! This is a simple and addictive game where your c
 This game does not require any external libraries or frameworks. It is built using Python.
 
 ## Contribution:
-Contributions to the Jump and Dodge Game are welcome! If you have any ideas, bug fixes, or improvements, feel free to submit a pull request on the GitHub repository.
+Contributions to the Forrest Gump game are welcome! If you have any ideas, bug fixes, or improvements, feel free to submit a pull request on the GitHub repository.

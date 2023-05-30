@@ -101,6 +101,10 @@ start_font = pygame.font.SysFont('Ariel', 30)
 start_surf = start_font.render('Press the character to start', False, 'Blue')
 start_rect = start_surf.get_rect(center = (400, 195))
 
+start_name_font = pygame.font.SysFont('ariel', 110)
+start_name_surf = start_name_font.render('Forrest Gump', False, 'cyan')
+start_name_rect = name_surf.get_rect(center = (290,300))
+
 player_gravity = 0
 
 #Timer
@@ -179,7 +183,7 @@ while True:
 
     else:
         screen.blit(restart_surf, restart_rect)
-        screen.blit(name_surf, name_rect)
+        screen.blit(start_name_surf, start_name_rect)
         screen.blit(pic_player_surf, pic_player_rect)
 
         # obstacle_rect_list.clear()
