@@ -7,7 +7,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image = pygame.image.load('char.png').convert_alpha()
-        self.image = pygame.transform.scale(self.image, (80, 80))
+        self.image = pygame.transform.scale(self.image, (60, 60))
         self.rect = self.image.get_rect(bottomleft = (100,360))
 
 def display_score():
@@ -47,6 +47,9 @@ clock = pygame.time.Clock()
 game_active = False
 start_time = 0
 score = 0
+
+player = pygame.sprite.GroupSingle()
+player.add(Player())
 
 #Obstacles
 enemya_surf = pygame.image.load('enemy.png').convert_alpha()
@@ -147,6 +150,7 @@ while True:
         if player_rect.bottom >= 360:
             player_rect.bottom = 360
         screen.blit(player_surf, player_rect)
+        player.draw(screen)
 
         #Obstacle movement
         obstacle_rect_list = obstacle_movement(obstacle_rect_list)
