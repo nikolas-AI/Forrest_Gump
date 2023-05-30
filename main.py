@@ -61,8 +61,8 @@ text_font = pygame.font.SysFont('Ariel', 55)
 name_surf = text_font.render('Forrest Gump', False, (0,0,2))
 name_rect = name_surf.get_rect(center = (400,20))
 
-player_surf = pygame.image.load('chara.png').convert_alpha()
-player_surf = pygame.transform.scale(player_surf, (30,60))
+player_surf = pygame.image.load('char.png').convert_alpha()
+player_surf = pygame.transform.scale(player_surf, (80,80))
 player_rect = player_surf.get_rect(bottomleft = (100,350))
 
 restart_surf = pygame.image.load('screen2.jpg').convert_alpha()
