@@ -62,24 +62,24 @@ name_surf = text_font.render('Forrest Gump', False, (0,0,2))
 name_rect = name_surf.get_rect(center = (400,20))
 
 player_surf = pygame.image.load('chara.png').convert_alpha()
-player_surf = pygame.transform.scale(player_surf, (70,70))
+player_surf = pygame.transform.scale(player_surf, (30,60))
 player_rect = player_surf.get_rect(bottomleft = (100,350))
 
 restart_surf = pygame.image.load('screen2.jpg').convert_alpha()
 restart_surf = pygame.transform.scale(restart_surf, (800, 800))
 restart_rect = restart_surf.get_rect(x = 0)
 
-pic_player_surf = pygame.image.load('chara.png').convert_alpha()
-pic_player_surf = pygame.transform.scale(pic_player_surf, (150,150))
-pic_player_rect = pic_player_surf.get_rect(center = (400,90))
+pic_player_surf = pygame.image.load('char.png').convert_alpha()
+pic_player_surf = pygame.transform.scale(pic_player_surf, (190,190))
+pic_player_rect = pic_player_surf.get_rect(center = (400,98))
 
 over_font = pygame.font.SysFont('Ariel', 100)
 over_surf = over_font.render('Game over', False, 'Red')
-over_rect = over_surf.get_rect(center = (400, 170))
+over_rect = over_surf.get_rect(center = (400, 195))
 
 start_font = pygame.font.SysFont('Ariel', 30)
 start_surf = start_font.render('Press the character to start', False, 'Blue')
-start_rect = start_surf.get_rect(center = (400, 180))
+start_rect = start_surf.get_rect(center = (400, 195))
 
 player_gravity = 0
 
