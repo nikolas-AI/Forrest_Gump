@@ -1,5 +1,7 @@
 import pygame
 from sys import exit
+from random import randint
+import time
 
 def display_score():
    time = int(pygame.time.get_ticks() / 800) - start_time
@@ -8,6 +10,17 @@ def display_score():
    screen.blit(score_surf, score_rect)
    return time
 
+def obstacle_movement(obstacle_list):
+    if obstacle_list:
+        for obstacle_rect in obstacle_list:
+            obstacle_rect.x -= 5
+
+            screen.blit(enemy_surf, obstacle_rect)
+        obstacle_list = [obstacle for obstacle in obstacle_list if obstacle.x > -100]
+        return obstacle_list
+    else:
+        return [ ]
+    
 pygame.init()
 screen =  pygame.display.set_mode((800,400))
 screen_rect = screen.get_rect(x = 0)
@@ -17,10 +30,13 @@ game_active = False
 start_time = 0
 score = 0
 
+#Obstacles
 enemy_surf = pygame.image.load('enemy.png').convert_alpha()
 enemy_surf = pygame.transform.scale(enemy_surf, (70,70))
-enemy_rect = enemy_surf.get_rect(bottomleft = (700,350))
-x_pos = 700
+enemy_rect = enemy_surf.get_rect(bottomleft = (randint(500, 700) ,350))
+
+obstacle_rect_list =[ ]
+
 
 sky_surf = pygame.image.load('screen1.jpg').convert_alpha()
 sky_surf = pygame.transform.scale(sky_surf, (800,800))
@@ -56,6 +72,10 @@ start_rect = start_surf.get_rect(center = (400, 180))
 
 player_gravity = 0
 
+#Timer
+obstacle_timer = pygame.USEREVENT + 1
+pygame.time.set_timer(obstacle_timer, 1500)
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -74,6 +94,10 @@ while True:
                     player_rect.left -= 5
                 if event.key == pygame.K_RIGHT and player_rect.right <= 300:
                     player_rect.right += 5
+
+            if event.type == obstacle_timer:
+                obstacle_rect_list.append(enemy_surf.get_rect(bottomleft = (randint(850, 1500) ,350)))
+
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True
@@ -85,7 +109,6 @@ while True:
                 enemy_rect.left = 800
                 start_time = int(pygame.time.get_ticks() / 800)
 
-
     if game_active:
         screen.blit(sky_surf,(0,0))
         screen.blit(ground_surf,(0,300))
@@ -93,9 +116,9 @@ while True:
         score = display_score()
 
 
-        enemy_rect.right -= 5
-        if enemy_rect.right <= 0: enemy_rect.left =800
-        screen.blit(enemy_surf,enemy_rect)
+        # enemy_rect.right -= 5
+        # if enemy_rect.right <= 0: enemy_rect.left =800
+        # screen.blit(enemy_surf,enemy_rect)
 
         #Player
         player_gravity += 0.8
@@ -104,9 +127,13 @@ while True:
             player_rect.bottom = 350
         screen.blit(player_surf, player_rect)
 
+        #Obstacle movement
+        obstacle_rect_list = obstacle_movement(obstacle_rect_list)
+
         #Collision
         if enemy_rect.colliderect(player_rect):
             game_active = False
+            time.sleep(1)
             player_rect.left = 100
 
     else:
