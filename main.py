@@ -14,8 +14,9 @@ def obstacle_movement(obstacle_list):
     if obstacle_list:
         for obstacle_rect in obstacle_list:
             obstacle_rect.x -= 5
+            if obstacle_rect.bottom == 350: screen.blit(enemya_surf, obstacle_rect)
+            else: screen.blit(enemyb_surf, obstacle_rect)
 
-            screen.blit(enemy_surf, obstacle_rect)
         obstacle_list = [obstacle for obstacle in obstacle_list if obstacle.x > -100]
         return obstacle_list
     else:
@@ -31,9 +32,11 @@ start_time = 0
 score = 0
 
 #Obstacles
-enemy_surf = pygame.image.load('enemy.png').convert_alpha()
-enemy_surf = pygame.transform.scale(enemy_surf, (70,70))
-enemy_rect = enemy_surf.get_rect(bottomleft = (randint(500, 700) ,350))
+enemya_surf = pygame.image.load('enemy.png').convert_alpha()
+enemya_surf = pygame.transform.scale(enemya_surf, (70,70))
+
+enemyb_surf = pygame.image.load('enemyb.png').convert_alpha()
+enemyb_surf = pygame.transform.scale(enemyb_surf, (70,70))
 
 obstacle_rect_list =[ ]
 
@@ -96,17 +99,18 @@ while True:
                     player_rect.right += 5
 
             if event.type == obstacle_timer:
-                obstacle_rect_list.append(enemy_surf.get_rect(bottomleft = (randint(850, 1500) ,350)))
+                if randint(0, 2):
+                    obstacle_rect_list.append(enemya_surf.get_rect(bottomleft = (randint(850, 1500) ,350)))
+                else:
+                    obstacle_rect_list.append(enemyb_surf.get_rect(bottomleft = (randint(850, 1500) ,250)))
 
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True
-                enemy_rect.left = 800
                 start_time = int(pygame.time.get_ticks() / 800)
 
             elif event.type == pygame.MOUSEBUTTONDOWN and pic_player_rect.collidepoint(event.pos):
                 game_active = True
-                enemy_rect.left = 800
                 start_time = int(pygame.time.get_ticks() / 800)
 
     if game_active:
@@ -116,9 +120,9 @@ while True:
         score = display_score()
 
 
-        # enemy_rect.right -= 5
-        # if enemy_rect.right <= 0: enemy_rect.left =800
-        # screen.blit(enemy_surf,enemy_rect)
+        # enemya_rect.right -= 5
+        # if enemya_rect.right <= 0: enemya_rect.left =800
+        # screen.blit(enemya_surf,enemya_rect)
 
         #Player
         player_gravity += 0.8
@@ -131,10 +135,10 @@ while True:
         obstacle_rect_list = obstacle_movement(obstacle_rect_list)
 
         #Collision
-        if enemy_rect.colliderect(player_rect):
-            game_active = False
-            time.sleep(1)
-            player_rect.left = 100
+        # if enemya_rect.colliderect(player_rect):
+        #     game_active = False
+        #     time.sleep(1)
+        #     player_rect.left = 100
 
     else:
         screen.blit(restart_surf, restart_rect)
