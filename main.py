@@ -4,6 +4,7 @@ from random import randint
 import time
 
 from player import Player
+from obstacle import Obstacle
 
 def display_score():
    time = int(pygame.time.get_ticks() / 800) - start_time
@@ -43,8 +44,10 @@ game_active = False
 start_time = 0
 score = 0
 
+#Groups
 player = pygame.sprite.GroupSingle()
 player.add(Player())
+obstacle_group = pygame.sprite.Group()
 
 #Obstacles
 enemya_surf = pygame.image.load('enemy.png').convert_alpha()
@@ -114,10 +117,11 @@ while True:
                     player_rect.right += 5
 
             if event.type == obstacle_timer:
-                if randint(0, 2):
-                    obstacle_rect_list.append(enemya_surf.get_rect(bottomleft = (randint(850, 1500) ,360)))
-                else:
-                    obstacle_rect_list.append(enemyb_surf.get_rect(bottomleft = (randint(850, 1500) ,280)))
+                obstacle_group.add(Obstacle('fly'))
+                # if randint(0, 2):
+                #     obstacle_rect_list.append(enemya_surf.get_rect(bottomleft = (randint(850, 1500) ,360)))
+                # else:
+                #     obstacle_rect_list.append(enemyb_surf.get_rect(bottomleft = (randint(850, 1500) ,280)))
 
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
@@ -140,13 +144,15 @@ while True:
         # screen.blit(enemya_surf,enemya_rect)
 
         #Player
-        player_gravity += 0.8
+        player_gravity += 0.8 
         player_rect.y += player_gravity
         if player_rect.bottom >= 360:
             player_rect.bottom = 360
         screen.blit(player_surf, player_rect)
         player.draw(screen)
         player.update()
+        obstacle_group.draw(screen)
+        obstacle_group.update()
 
         #Obstacle movement
         obstacle_rect_list = obstacle_movement(obstacle_rect_list)
