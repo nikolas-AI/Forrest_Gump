@@ -14,7 +14,7 @@ def obstacle_movement(obstacle_list):
     if obstacle_list:
         for obstacle_rect in obstacle_list:
             obstacle_rect.x -= 5
-            if obstacle_rect.bottom == 350:
+            if obstacle_rect.bottom == 360:
                 screen.blit(enemya_surf, obstacle_rect)
             else: 
                 screen.blit(enemyb_surf, obstacle_rect)
@@ -63,7 +63,7 @@ name_rect = name_surf.get_rect(center = (400,20))
 
 player_surf = pygame.image.load('char.png').convert_alpha()
 player_surf = pygame.transform.scale(player_surf, (80,80))
-player_rect = player_surf.get_rect(bottomleft = (100,350))
+player_rect = player_surf.get_rect(bottomleft = (100,360))
 
 restart_surf = pygame.image.load('screen2.jpg').convert_alpha()
 restart_surf = pygame.transform.scale(restart_surf, (800, 800))
@@ -95,11 +95,11 @@ while True:
 
         if game_active:    
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if player_rect.collidepoint(event.pos) and  player_rect.bottom >= 200:
+                if player_rect.collidepoint(event.pos) and  player_rect.bottom >= 180:
                     player_gravity = -18
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE and player_rect.bottom >= 200:
+                if event.key == pygame.K_SPACE and player_rect.bottom >= 180:
                     player_gravity = -18
                 if event.key == pygame.K_LEFT and player_rect.left >= 0:
                     player_rect.left -= 5
@@ -108,9 +108,9 @@ while True:
 
             if event.type == obstacle_timer:
                 if randint(0, 2):
-                    obstacle_rect_list.append(enemya_surf.get_rect(bottomleft = (randint(850, 1500) ,350)))
+                    obstacle_rect_list.append(enemya_surf.get_rect(bottomleft = (randint(850, 1500) ,360)))
                 else:
-                    obstacle_rect_list.append(enemyb_surf.get_rect(bottomleft = (randint(850, 1500) ,250)))
+                    obstacle_rect_list.append(enemyb_surf.get_rect(bottomleft = (randint(850, 1500) ,280)))
 
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
@@ -135,8 +135,8 @@ while True:
         #Player
         player_gravity += 0.8
         player_rect.y += player_gravity
-        if player_rect.bottom >= 350:
-            player_rect.bottom = 350
+        if player_rect.bottom >= 360:
+            player_rect.bottom = 360
         screen.blit(player_surf, player_rect)
 
         #Obstacle movement
@@ -150,7 +150,7 @@ while True:
         screen.blit(name_surf, name_rect)
         screen.blit(pic_player_surf, pic_player_rect)
         obstacle_rect_list.clear()
-        player_rect.bottomleft = (100,350)
+        player_rect.bottomleft = (100,360)
         player_gravity = 0
         
         over_score =text_font.render(f'Your score: {score}', False, (34,0,150))
