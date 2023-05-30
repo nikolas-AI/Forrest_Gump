@@ -51,6 +51,8 @@ clock = pygame.time.Clock()
 game_active = False
 start_time = 0
 score = 0
+bg_music = pygame.mixer.Sound('bgm.mp3')
+bg_music.play(loops = -1)
 
 #Groups
 player = pygame.sprite.GroupSingle()
