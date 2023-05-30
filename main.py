@@ -3,7 +3,7 @@ from sys import exit
 from random import randint
 import time
 
-from classa import Player
+from player import Player
 
 def display_score():
    time = int(pygame.time.get_ticks() / 800) - start_time
