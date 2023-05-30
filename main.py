@@ -35,7 +35,7 @@ def collisions(player, obstacles):
     if obstacles:
         for obstacle_rect in obstacles:
             if player.colliderect(obstacle_rect):
-                time.sleep(1)
+                time.sleep(.5)
                 return False
     return True
          
@@ -53,7 +53,7 @@ enemya_surf = pygame.image.load('enemy.png').convert_alpha()
 enemya_surf = pygame.transform.scale(enemya_surf, (50,50))
 
 enemyb_surf = pygame.image.load('enemyb.png').convert_alpha()
-enemyb_surf = pygame.transform.scale(enemyb_surf, (70,70))
+enemyb_surf = pygame.transform.scale(enemyb_surf, (60,60))
 
 obstacle_rect_list =[ ]
 
@@ -71,7 +71,7 @@ name_surf = text_font.render('Forrest Gump', False, (0,0,2))
 name_rect = name_surf.get_rect(center = (400,20))
 
 player_surf = pygame.image.load('char.png').convert_alpha()
-player_surf = pygame.transform.scale(player_surf, (80,80))
+player_surf = pygame.transform.scale(player_surf, (60,60))
 player_rect = player_surf.get_rect(bottomleft = (100,360))
 
 restart_surf = pygame.image.load('screen2.jpg').convert_alpha()
@@ -79,8 +79,8 @@ restart_surf = pygame.transform.scale(restart_surf, (800, 800))
 restart_rect = restart_surf.get_rect(x = 0)
 
 pic_player_surf = pygame.image.load('char.png').convert_alpha()
-pic_player_surf = pygame.transform.scale(pic_player_surf, (190,190))
-pic_player_rect = pic_player_surf.get_rect(center = (400,98))
+pic_player_surf = pygame.transform.scale(pic_player_surf, (150,150))
+pic_player_rect = pic_player_surf.get_rect(center = (400,105))
 
 over_font = pygame.font.SysFont('Ariel', 100)
 over_surf = over_font.render('Game over', False, 'Red')
