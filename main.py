@@ -69,11 +69,11 @@ obstacle_group = pygame.sprite.Group()
 # obstacle_rect_list =[ ]
 
 
-sky_surf = pygame.image.load('screen1.jpg').convert_alpha()
+sky_surf = pygame.image.load('images/screen1.jpg').convert_alpha()
 sky_surf = pygame.transform.scale(sky_surf, (800,800))
 sky_rect = sky_surf.get_rect(x = 0)
 
-ground_surf = pygame.image.load('ground.jpg').convert_alpha()
+ground_surf = pygame.image.load('images/ground.jpg').convert_alpha()
 ground_surf = pygame.transform.scale(ground_surf, (800,100))
 sky_rect = ground_surf.get_rect(y = 0)
 
@@ -85,11 +85,11 @@ name_rect = name_surf.get_rect(center = (400,20))
 # player_surf = pygame.transform.scale(player_surf, (60,60))
 # player_rect = player_surf.get_rect(bottomleft = (100,360))
 
-restart_surf = pygame.image.load('screen2.jpg').convert_alpha()
+restart_surf = pygame.image.load('images/screen2.jpg').convert_alpha()
 restart_surf = pygame.transform.scale(restart_surf, (800, 800))
 restart_rect = restart_surf.get_rect(x = 0)
 
-pic_player_surf = pygame.image.load('char.png').convert_alpha()
+pic_player_surf = pygame.image.load('images/char.png').convert_alpha()
 pic_player_surf = pygame.transform.scale(pic_player_surf, (150,150))
 pic_player_rect = pic_player_surf.get_rect(center = (400,105))
 

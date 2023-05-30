@@ -6,12 +6,12 @@ class Obstacle(pygame.sprite.Sprite):
         super().__init__()
 
         if type == 'fly':
-            enemy_surf = pygame.image.load('enemyb.png').convert_alpha()
+            enemy_surf = pygame.image.load('images/enemyb.png').convert_alpha()
             enemy_surf = pygame.transform.scale(enemy_surf, (60,60))
             self.image = enemy_surf
             self.rect = enemy_surf.get_rect(bottomleft = (randint(850, 1500) ,280))
         else:
-            enemy_surf = pygame.image.load('enemy.png').convert_alpha()
+            enemy_surf = pygame.image.load('images/enemy.png').convert_alpha()
             enemy_surf = pygame.transform.scale(enemy_surf, (50,50))
             self.image = enemy_surf
             self.rect = enemy_surf.get_rect(bottomleft = (randint(850, 1500) ,360))

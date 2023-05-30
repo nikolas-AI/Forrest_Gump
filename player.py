@@ -3,7 +3,7 @@ import pygame
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('char.png').convert_alpha()
+        self.image = pygame.image.load('images/char.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (60, 60))
         self.rect = self.image.get_rect(bottomleft = (130,360))
         self.gravity = 0
