@@ -31,7 +31,7 @@ ground_surf = pygame.transform.scale(ground_surf, (800,100))
 sky_rect = ground_surf.get_rect(y = 0)
 
 text_font = pygame.font.SysFont('Ariel', 55)
-name_surf = text_font.render('Forrest Gump', False, 'Black')
+name_surf = text_font.render('Forrest Gump', False, (0,0,2))
 name_rect = name_surf.get_rect(center = (400,20))
 
 player_surf = pygame.image.load('chara.png').convert_alpha()
@@ -89,7 +89,7 @@ while True:
     if game_active:
         screen.blit(sky_surf,(0,0))
         screen.blit(ground_surf,(0,300))
-        screen.blit(name_surf, name_rect)
+        # screen.blit(name_surf, name_rect)
         score = display_score()
 
 
@@ -114,8 +114,8 @@ while True:
         screen.blit(name_surf, name_rect)
         screen.blit(pic_player_surf, pic_player_rect)
         
-        over_score =text_font.render(f'Your score: {score}', False, 'Blue')
-        over_score_rect = over_score.get_rect(center = (400, 230))
+        over_score =text_font.render(f'Your score: {score}', False, (34,0,150))
+        over_score_rect = over_score.get_rect(center = (400, 250))
 
         if score == 0:
             screen.blit(start_surf, start_rect)
