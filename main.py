@@ -143,7 +143,7 @@ while True:
                 #     obstacle_rect_list.append(enemyb_surf.get_rect(bottomleft = (randint(850, 1500) ,280)))
 
         else:
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
                 game_active = True
                 start_time = int(pygame.time.get_ticks() / 800)
 

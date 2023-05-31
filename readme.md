@@ -2,7 +2,7 @@
 Welcome to Jump and Dodge Game! This is a simple and addictive game where your character needs to jump to avoid obstacles and stay alive as long as possible. Test your reflexes and see how far you can go!
 
 ## Instructions:
-1. Start the game by pressing the Character icon or Spacebar.
+1. Start the game by pressing the Character icon or 'p'.
 2. Control your character's horizontal movement using the left and right arrow keys.
 3. Press the spacebar to make your character jump.
 4. Your character will automatically move forward.
